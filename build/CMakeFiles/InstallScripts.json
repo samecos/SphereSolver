@@ -1,0 +1,7 @@
+{
+	"InstallScripts" : 
+	[
+		"C:/code/samecos/SphereSolver/build/cmake_install.cmake"
+	],
+	"Parallel" : false
+}

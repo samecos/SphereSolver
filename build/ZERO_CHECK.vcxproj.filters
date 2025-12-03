@@ -1,0 +1,13 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="17.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup>
+    <CustomBuild Include="C:\code\samecos\SphereSolver\build\CMakeFiles\1dc5651ef061e9db9dd22bdbe117c199\generate.stamp.rule">
+      <Filter>CMake Rules</Filter>
+    </CustomBuild>
+  </ItemGroup>
+  <ItemGroup>
+    <Filter Include="CMake Rules">
+      <UniqueIdentifier>{B275B76D-4330-3B5C-91E7-B83CA1CFEC77}</UniqueIdentifier>
+    </Filter>
+  </ItemGroup>
+</Project>
