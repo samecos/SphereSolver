@@ -25,6 +25,9 @@ public:
 
     // Generate points on sphere surface with noise
     static std::vector<Point3D> generateSpherePoints(Point3D center, double radius, int count, double variance);
+
+    // overload generateSpherePoints with set a angle range for sampling
+    static std::vector<Point3D> generateSpherePoints(Point3D center, double radius, int count, double variance, double minTheta, double maxTheta, double minPhi, double maxPhi);
 };
 
 #endif // SPHERE_UTILS_H

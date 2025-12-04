@@ -149,3 +149,42 @@ std::vector<Point3D> SphereUtils::generateSpherePoints(Point3D center, double ra
     }
     return points;
 }
+
+std::vector<Point3D> SphereUtils::generateSpherePoints(Point3D center, double radius, int count, double variance, double minTheta, double maxTheta, double minPhi, double maxPhi)
+{
+    std::vector<Point3D> points;
+    // Standard deviation is sqrt(variance)
+    double stdDev = (variance > 0) ? std::sqrt(variance) : 0;
+
+    std::mt19937 gen(std::random_device{}());
+    std::normal_distribution<double> noiseDist(0.0, stdDev);
+    std::uniform_real_distribution<double> thetaDist(minTheta, maxTheta);
+    std::uniform_real_distribution<double> phiDist(minPhi, maxPhi);
+
+    for (int i = 0; i < count; ++i)
+    {
+        double theta = thetaDist(gen);
+        double phi = phiDist(gen);
+
+        double sinPhi = std::sin(phi);
+        double cosPhi = std::cos(phi);
+
+        // Point on unit sphere
+        double ux = sinPhi * std::cos(theta);
+        double uy = sinPhi * std::sin(theta);
+        double uz = cosPhi;
+
+        // Scale by radius and add to center
+        double x = center.x + radius * ux;
+        double y = center.y + radius * uy;
+        double z = center.z + radius * uz;
+
+        // Add noise
+        x += noiseDist(gen);
+        y += noiseDist(gen);
+        z += noiseDist(gen);
+
+        points.push_back({x, y, z});
+    }
+    return points;
+}

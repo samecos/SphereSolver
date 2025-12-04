@@ -17,6 +17,7 @@ int main()
         std::cout << "1. Calculate Sphere Center (from Radius + Points)\n";
         std::cout << "2. Generate Noisy Sphere Points\n";
         std::cout << "3. Exit\n";
+        std::cout << "4. Generate Noisy Sphere Points With Angles\n";
         std::cout << "Select option: ";
 
         int choice;
@@ -75,6 +76,29 @@ int main()
             std::cin >> n;
 
             std::vector<Point3D> points = SphereUtils::generateSpherePoints(c, r, n, v);
+            std::cout << "\nGenerated Points (x y z):\n";
+            std::cout << std::fixed << std::setprecision(4);
+            for (const auto &p : points)
+            {
+                std::cout << p.x << " " << p.y << " " << p.z << "\n";
+            }
+        }
+        else if (choice == 4)
+        {
+            Point3D c;
+            double r, v;
+            int n;
+            std::cout << "Enter Center (x y z): ";
+            std::cin >> c.x >> c.y >> c.z;
+            std::cout << "Enter Radius: ";
+            std::cin >> r;
+            std::cout << "Enter Variance (Noise Power): ";
+            std::cin >> v;
+            std::cout << "Enter number of points to generate: ";
+            std::cin >> n;
+            double minTheta = -0.1, maxTheta = 0.1, minPhi = -0.1, maxPhi = 0.1;
+
+            std::vector<Point3D> points = SphereUtils::generateSpherePoints(c, r, n, v, minTheta, maxTheta, minPhi, maxPhi);
             std::cout << "\nGenerated Points (x y z):\n";
             std::cout << std::fixed << std::setprecision(4);
             for (const auto &p : points)
